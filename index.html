@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>漂浮</title>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/snowfall.js"></script>
+</head>
+<body>
+	<div id="leafContainer" style="height:100%">
+		<button class="switchBtn">开关</button>
+	</div>
+
+	<script type="text/javascript">
+	
+		function init()
+	    {
+	        var img_url = [];
+	        for(var i=1;i<=6;i++){
+	            var s_url = 'images/hb_0'+i+'.png';
+	            img_url.push(s_url);
+	        }
+
+
+	        $("#leafContainer").snowfall({
+	            image: img_url, //img_url 图片地址数组
+	            flakeCount:20,
+	            minSize: 20,
+	            maxSize: 30,
+	            maxSpeed : 3,
+	        });
+	    }
+
+	    $(".switchBtn").click(function(){
+	    	var $this = $(this);
+	    	var isClose = $this.hasClass("close");
+	    	if(isClose){
+				$this.removeClass("close")
+				init() //开启
+
+	    	} else {
+	    		$this.addClass("close")
+	    		$('#leafContainer').snowfall('clear'); //关闭
+	    	}
+	    })
+
+	    init();//初始
+	</script>
+</body>
+</html>
